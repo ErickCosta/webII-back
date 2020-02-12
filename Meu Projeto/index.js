@@ -1,5 +1,6 @@
 var express = require('express')
 var server = express()
+var pessoaController = require('./controllers/PessoaController');
 
 server.use(express.json())
 
@@ -9,29 +10,13 @@ var values = [
 {"nome": "Paula", "cpf": 00000000002,}
 ]
 
-server.get('/', function (req, res){
-    console.log("GET values!")
-    res.json(values)
-})
+server.get('/', pessoaController.get);
 
-server.get('/:index', function (req, res){
-    var index = req.params.index
-    console.log("GET value!")
-    console.log(index)
-    res.json(values[index])
-})
+server.get('/:index', pessoaController.getByIndex);
 
-server.post('/', function (req, res){
-    console.log("POST add!")
-    values.push(req.body)
-    res.json(values)
-})
+server.post('/', pessoaController.post);
 
-server.put('/', function (req, res){
-    var novoObj = {"nome": req.body.nome, "cpf": req.body.cpf}
-    values[req.body.index] = novoObj
-    res.json(values)
-})
+server.put('/', pessoaController.put);
 
 server.delete('/:index', function (req, res){
     values.splice(req.params.index, 1);
