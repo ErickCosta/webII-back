@@ -1,17 +1,13 @@
 var express = require('express')
 var mongoose = require('mongoose')
+var requireDir = require('requiredir')
 var server = express()
 var pessoaController = require('./controllers/PessoaController');
 
 server.use(express.json())
 
 mongoose.connect("mongodb+srv://erick:erick@cluster0-7wp8b.mongodb.net/test?retryWrites=true&w=majority",{})
-
-var values = [
-{"nome": "Erick", "cpf": 00000000000,}, 
-{"nome": "Maria", "cpf": 00000000001,},
-{"nome": "Paula", "cpf": 00000000002,}
-]
+requireDir('./models')
 
 server.get('/', pessoaController.get);
 

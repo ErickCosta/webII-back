@@ -1,20 +1,14 @@
-
-
-var values = [
-    {"nome": "João", "cpf": 00000000000,}, 
-    {"nome": "Lucas", "cpf": 00000000001,},
-    {"nome": "Paula", "cpf": 00000000002,}
-    ];
+var pessoa = require('../models/Pessoa')
 
 class PessoaController{
 
-    get (req, res){
-        return res.json(values);
+    async get (req, res){
+        return res.json( await pessoa.find());
     }
 
-    getByIndex(req, res){
-        var index = req.params.index;
-        return res.json(values[index]);
+    async getByIndex(req, res){
+        var {index} = req.params
+        return res.json( await pessoa.findById(index));
     }
 
     post(req, res){
