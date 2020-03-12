@@ -11,15 +11,18 @@ class PessoaController{
         return res.json( await pessoa.findById(index));
     }
 
-    post(req, res){
-        values.push(req.body);
-        return res.json(values);
+    async post(req, res){
+        return res.json(await pessoa.create(req.body));
     }
 
-    put(req, res){
-        var novoObj = {"nome": req.body.nome, "cpf": req.body.cpf}
-        values[req.body.index] = novoObj
-        return res.json(values)
+    async put(req, res){
+        var {index, nome, cpf} = req.body
+        return res.json(await pessoa.findByIdAndUpdate(index, {nome: nome, cpf: cpf}))
+    }
+
+    async delete(req, res){
+        var {index} = req.params
+        return res.json(await pessoa.findByIdAndRemove(index))
     }
 }
 

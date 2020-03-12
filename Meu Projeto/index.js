@@ -6,7 +6,7 @@ var pessoaController = require('./controllers/PessoaController');
 
 server.use(express.json())
 
-mongoose.connect("mongodb+srv://erick:erick@cluster0-7wp8b.mongodb.net/test?retryWrites=true&w=majority",{})
+mongoose.connect("mongodb://localhost:27017/mongodb",{})
 requireDir('./models')
 
 server.get('/', pessoaController.get);
@@ -17,10 +17,7 @@ server.post('/', pessoaController.post);
 
 server.put('/', pessoaController.put);
 
-server.delete('/:index', function (req, res){
-    values.splice(req.params.index, 1);
-    res.json(values);
-})
+server.delete('/:index', pessoaController.delete);
 
 server.listen(8000)
 console.log("Servidor rodando!")

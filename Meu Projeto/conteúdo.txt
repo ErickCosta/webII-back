@@ -1,0 +1,12 @@
+1 - Node JS? Framework executa JS no lado servidor.
+2 - Express? Permite levante um servidor.
+3 - Rotas? Porta de comunicação com o back.
+4 - Verbos HTTP? Ação a ser executada pelo back.
+5 - MVC? Model, view e controller.
+6 - Model? Representação da informação a ser manipulada.
+7 - Controller? Processar os dados.
+8 - Mongoose? ORM mapeamento do banco e conexão.
+9 - NPM? Gerenciador de pacotes.
+10 - Inicializar? npm init.
+11 - Instalar? npm install <pacote>.
+12 - Update? npm update.
